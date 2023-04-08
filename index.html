@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Per-Word Bionic Converter</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 20px;
+            padding-left: 30px;
+                        padding-right: 30px;
+
+		}
+        
+         p {
+			text-align: left;
+			margin-top: 30px;
+			margin-bottom: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
+		}
+        
+		form {
+			margin-bottom: 30px;
+            max-width: 90%;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #ffffff;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			white-space: pre-line;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"], textarea {
+			display: block;
+            			font-family: Arial, sans-serif;
+
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-bottom: 10px;
+			font-size: 16px;
+		}
+		input[type="submit"] {
+			margin-top: 10px;
+			padding: 8px 15px;
+			background-color: black;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+            			margin-bottom: 10px;
+
+		}
+		input[type="submit"]:hover {
+			background-color: dimgray;
+		}
+		.output {
+			max-width: 90%;
+			margin: 0 auto;
+			margin-bottom: 30px;
+			padding: 20px;
+			background-color: #f7f7f7;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			white-space: pre-line;
+		}
+		.bold {
+			font-weight: bold;
+		}
+        .slider {
+            -webkit-appearance: none;
+            
+            width: 100%;
+            height: 5px;
+            margin: 10px auto;
+            background: #ddd;
+            outline: none;
+            opacity: 0.9;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            
+        }
+        .slider:hover {
+            opacity: 1;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: black;
+            cursor: pointer;
+            
+        }
+	</style>
+</head>
+<body>
+	<h1>(Per-Word) Bionic Converter</h1>
+		<form onsubmit="return false;">
+		<label for="input-text">Text:</label>
+		<textarea id="input-text" name="input-text" rows="10"></textarea>
+		<label for="bold-slider">Bold Probability:</label>
+        <input type="range" min="0" max="1" step="0.1" value="0.2" class="slider" id="bold-slider"><br><br>
+		<input type="submit" value="Convert" onclick="convertText()">
+	</form>
+	<div class="output" id="output-text"></div>
+	<script>
+		function convertText() {
+			let inputText = document.getElementById("input-text").value;
+			let words = inputText.split(" ");
+		
+			let outputText = "";
+            	let boldProbability = document.getElementById("bold-slider").value;
+		
+
+			for (let i = 0; i < words.length; i++) {
+				let word = words[i];
+				let bold = Math.random() < boldProbability ? "bold" : "";
+				outputText += "<span class=\"" + bold + "\">" + word + "</span> ";
+			}
+
+			document.getElementById("output-text").innerHTML = outputText;
+		}
+	</script>
+    
+    
+        <p><a href=https://bionic-reading.com/ target=”_blank”><b>Bionic reading</b>
+        </a> is a <b>reading method</b> brought to you by <a href=https://www.howtogeek.com/807981/what-is-bionic-reading-and-how-do-you-use-it/ target="_blank"><b>Renato Casutt</b></a>, a typographic designer from Switzerland. The idea is to <b>bold</b> certain letters from a read. 
+    
+              The method is <b>especially helpful</b> for people with <b>reading</b> and <b>attention</b> difficulties. 
+            
+               Please check it out. Currently, the app is  <b>free</b>.
+
+        
+    
+    <br><br>
+              
+             
+
+            With this method, I hardly <b>skip lines</b> when reading. 
+        However,<b> personally</b>, randomly bolded letters make me a bit <b>dizzy</b>.     
+                             
+            I instead prefer to have randomly <b>bolded words</b>. That's why I designed this page.
+        
+            <b>Try</b> this out and see which reading <b>method </b>suits you better.
+            
+    
+    <br><br>
+              
+             Try out the <b>bold probability</b> slider. Also, you can click on the <b>"Convert"</b> button as many times as you want.
+    </p>
+    
+    
+    
+</body>
+</html>
